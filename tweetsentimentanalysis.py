@@ -122,7 +122,7 @@ def predict_tweet(tweet, freqs, theta):
     
     return y_pred
     
-def logistic_regression(x_v, x_y, frequency, theta):
+def logistic_regression(x_v, y_v, frequency, theta):
 
     y_hat = []
     
@@ -134,7 +134,7 @@ def logistic_regression(x_v, x_y, frequency, theta):
         else:
             y_hat.append(0)
     y_hat = np.array(y_hat)
-    x_y = x_y.reshape(-1)
-    accuracy = np.sum((x_y == y_hat).astype(int))/len(x_v)
+    y_v = y_v.reshape(-1)
+    accuracy = np.sum((y_v == y_hat).astype(int))/len(x_v)
     
     return accuracy
