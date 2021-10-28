@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.python.pydev.pythonNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>pastnflseasonschedules.csv</name>
+			<type>1</type>
+			<location>C:/Users/wvoli/Desktop/pastnflseasonschedules.csv</location>
+		</link>
+	</linkedResources>
 </projectDescription>
