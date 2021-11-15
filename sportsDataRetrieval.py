@@ -35,7 +35,7 @@ def pullDataFromYear(year, week):
         new_dict['OpponentPenalties'] = x['OpponentPenalties']
         new_dict['TurnoverDifferential'] = x['TurnoverDifferential']
         new_dict['OpponentTurnoverDifferential'] = x['OpponentTurnoverDifferential']
-        if x['Score'] <= x['OpponentScore']:
+        if x['Score'] >= x['OpponentScore']:
             new_dict['result'] = 1
         else: 
             new_dict['result'] = 0
