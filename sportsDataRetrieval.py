@@ -74,7 +74,7 @@ if __name__ == "__main__":
         #     listOf2020 = pullDataFromYear('2020', str(i))
         #     writer.writerows(listOf2020)
         # for i in range(1,17):
-        listOf2021 = pullDataFromYear('2021', '9')
+        listOf2021 = pullDataFromYear('2021', '10')
         writer.writerows(listOf2021)
     
         
