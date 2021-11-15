@@ -24,19 +24,19 @@ def pullDataFromYear(year, week):
     new_dict = {'HomeTeam': '', 'AwayTeam': '','HomeScore': '', 'AwayScore': '', 'Date': '', 'PointSpread': '', 'Penalties': '', 'OpponentPenalties': '', 'TurnoverDifferential': '', 'OpponentTurnoverDifferential': ''}
     list_of_dicts_Scores = []
     for x in s_dictionary:
-        if not x['Opponent'] == 'BYE' and x['Team'] == 'NE' or x['Opponent'] == 'NE':
-            new_dict['HomeTeam'] = x['Team']
-            new_dict['HomeScore'] = x['Score']
-            new_dict['AwayTeam'] = x['Opponent']
-            new_dict['AwayScore'] = x['OpponentScore']
-            new_dict['Date'] = x['Date']
-            new_dict['PointSpread'] = x['PointSpread']
-            new_dict['Penalties'] = x['Penalties']
-            new_dict['OpponentPenalties'] = x['OpponentPenalties']
-            new_dict['TurnoverDifferential'] = x['TurnoverDifferential']
-            new_dict['OpponentTurnoverDifferential'] = x['OpponentTurnoverDifferential']
-            list_of_dicts_Scores.append(new_dict)
-            new_dict = {}
+        # if not x['Opponent'] == 'BYE' or : and x['Team'] == 'NE' or x['Opponent'] == 'NE':
+        new_dict['HomeTeam'] = x['Team']
+        new_dict['HomeScore'] = x['Score']
+        new_dict['AwayTeam'] = x['Opponent']
+        new_dict['AwayScore'] = x['OpponentScore']
+        new_dict['Date'] = x['Date']
+        new_dict['PointSpread'] = x['PointSpread']
+        new_dict['Penalties'] = x['Penalties']
+        new_dict['OpponentPenalties'] = x['OpponentPenalties']
+        new_dict['TurnoverDifferential'] = x['TurnoverDifferential']
+        new_dict['OpponentTurnoverDifferential'] = x['OpponentTurnoverDifferential']
+        list_of_dicts_Scores.append(new_dict)
+        new_dict = {}
     return list_of_dicts_Scores
     
     # list_of_dicts_Standings = []
@@ -67,15 +67,15 @@ if __name__ == "__main__":
     with open(r'C:\Users\wvoli\Desktop\pastnflseasonschedules.csv', 'w', encoding='UTF8', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=fieldNames)
         writer.writeheader()
-        for i in range(1,17):
-            listOf2019 = pullDataFromYear('2019', str(i))
-            writer.writerows(listOf2019)
-        for i in range(1,17):
-            listOf2020 = pullDataFromYear('2020', str(i))
-            writer.writerows(listOf2020)
-        for i in range(1,17):
-            listOf2021 = pullDataFromYear('2021', str(i))
-            writer.writerows(listOf2021)
+        # for i in range(1,17):
+        #     listOf2019 = pullDataFromYear('2019', str(i))
+        #     writer.writerows(listOf2019)
+        # for i in range(1,17):
+        #     listOf2020 = pullDataFromYear('2020', str(i))
+        #     writer.writerows(listOf2020)
+        # for i in range(1,17):
+        listOf2021 = pullDataFromYear('2021', '9')
+        writer.writerows(listOf2021)
     
         
             
