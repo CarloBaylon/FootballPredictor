@@ -21,7 +21,7 @@ def pullDataFromYear(year, week):
     # new_dict3 = {'WinningPercentage': ''}
     s = requests.get('https://api.sportsdata.io/v3/nfl/scores/json/TeamGameStats/'+ year + '/' + week + '?key=2c62d512a5c8434f89ea5d272d31531b')
     s_dictionary = s.json()
-    new_dict = {'HomeTeam': '', 'AwayTeam': '','HomeScore': '', 'AwayScore': '', 'Date': '', 'PointSpread': '', 'Penalties': '', 'OpponentPenalties': '', 'TurnoverDifferential': '', 'OpponentTurnoverDifferential': ''}
+    new_dict = {'HomeTeam': '', 'AwayTeam': '','HomeScore': '', 'AwayScore': '', 'Date': '', 'PointSpread': '', 'Penalties': '', 'OpponentPenalties': '', 'TurnoverDifferential': '', 'OpponentTurnoverDifferential': '', 'result': ''}
     list_of_dicts_Scores = []
     for x in s_dictionary:
         # if not x['Opponent'] == 'BYE' or : and x['Team'] == 'NE' or x['Opponent'] == 'NE':
@@ -35,6 +35,10 @@ def pullDataFromYear(year, week):
         new_dict['OpponentPenalties'] = x['OpponentPenalties']
         new_dict['TurnoverDifferential'] = x['TurnoverDifferential']
         new_dict['OpponentTurnoverDifferential'] = x['OpponentTurnoverDifferential']
+        if x['Score'] <= x['OpponentScore']:
+            new_dict['result'] = 1
+        else: 
+            new_dict['result'] = 0
         list_of_dicts_Scores.append(new_dict)
         new_dict = {}
     return list_of_dicts_Scores
@@ -63,7 +67,7 @@ def pullDataFromYear(year, week):
 #     return list_of_dicts_team
             
 if __name__ == "__main__":
-    fieldNames = ['HomeTeam', 'HomeScore', 'AwayTeam', 'AwayScore', 'Date', 'PointSpread', 'OpponentPenalties', 'OpponentTurnoverDifferential', 'TurnoverDifferential', 'Penalties']
+    fieldNames = ['HomeTeam', 'HomeScore', 'AwayTeam', 'AwayScore', 'Date', 'PointSpread', 'OpponentPenalties', 'OpponentTurnoverDifferential', 'TurnoverDifferential', 'Penalties', 'result']
     with open(r'C:\Users\wvoli\Desktop\pastnflseasonschedules.csv', 'w', encoding='UTF8', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=fieldNames)
         writer.writeheader()
